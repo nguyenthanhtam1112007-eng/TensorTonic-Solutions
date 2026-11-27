@@ -5,6 +5,13 @@ def selu(x: list) -> list:
     Returns SELU values rounded to four decimal places.
     """
     # Write code here
-    x = np.array(x)
-    return np.where(x>0, 1.0507*x, 1.0507*1.6733*(np.exp(x)-1))
+    x = np.asarray(x)
+
+    result = np.where(
+        x > 0,
+        1.0507 * x,
+        1.0507 * 1.6733 * np.expm1(x)
+    )
+
+    return np.round(result, 4).tolist()
     pass
